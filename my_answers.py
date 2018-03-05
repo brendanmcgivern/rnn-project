@@ -48,6 +48,9 @@ def window_transform_text(text, window_size, step_size):
     # containers for input/output pairs
     inputs = []
     outputs = []
+    
+    inputs = [text[i:window_size + i] for i in range(0, len(text), step_size)]
+    outputs= [text[i] for i in range(window_size, len(text), step_size)]
 
     return inputs,outputs
 
