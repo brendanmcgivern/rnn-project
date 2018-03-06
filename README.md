@@ -1,6 +1,6 @@
 # Recurrent Neural Networks: time series prediction and text generation
 
-![Apple Stock](./images/sherlock-time.png)
+![Sherlock Time](./images/sherlock-time.png)
 
 ## Overview
 
