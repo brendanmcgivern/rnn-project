@@ -10,7 +10,7 @@ In this project, I built two RNNs that can generate sequences based on input dat
 Using historical apple stock data, I created an RNN model to forecast the price changes 7 days in advance.
 
 ## Cutting the time series into sequences
-I could not pass my raw data directly into my model, so I began by Cutting my time series data into sequences.  I did this by creating a windowing function which essentially runs a sliding window along the input series and constructs a set of associated input/output pairs to regress on.
+I could not pass my raw data directly into my model, so I began by cutting my time series data into sequences.  I did this by creating a windowing function which essentially runs a sliding window along the input series and constructs a set of associated input/output pairs to regress on.
 
 ## Build an RNN regression model.
 Because of Keras' ease of use and abstraction layer, I was able to construct the RNN model with only a few lines of code.
@@ -59,7 +59,7 @@ indices_to_chars = dict((i, c) for i, c in enumerate(chars))
 
 I then wrote a function to use the two dictionaries above to one-hot encode the input/output pairs.
 
-## Building the RNN model.
+## Building the RNN model
 With our dataset loaded and the input/output pairs extracted/transformed, we can now begin setting up our RNN for training.
 
 I built a 3 layer RNN model with the following:
