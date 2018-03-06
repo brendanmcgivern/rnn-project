@@ -4,6 +4,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import LSTM
 import keras
+import string
 
 
 # TODO: fill out the function below that transforms the input series 
@@ -38,7 +39,7 @@ def cleaned_text(text):
     punctuation = ['!', ',', '.', ':', ';', '?']
     
     for c in text:
-        if not c.isalpha() and c not in punctuation:
+        if not in c.string.ascii_lowercase and c not in punctuation:
             text = text.replace(c,' ')
 
     return text
@@ -49,12 +50,19 @@ def window_transform_text(text, window_size, step_size):
     inputs = []
     outputs = []
     
-    inputs = [text[i:window_size + i] for i in range(0, len(text), step_size)]
-    outputs= [text[i] for i in range(window_size, len(text), step_size)]
+    inputs = [text[i:window_size + i] for i in range(0, len(text) - window_size, step_size)]
+    outputs = [text[i] for i in range(window_size, len(text), step_size)]
+    #inputs = [text[i:window_size + i] for i in range(len(text)-window_size)]
+    #outputs = [text[window_size + i] for i in range(len(text)-window_size)]
 
     return inputs,outputs
 
 # TODO build the required RNN model: 
 # a single LSTM hidden layer with softmax activation, categorical_crossentropy loss 
 def build_part2_RNN(window_size, num_chars):
-    pass
+    model = Sequential()
+    model.add(LSTM(200, input_shape = (window_size,num_chars)))
+    model.add(Dense(num_chars))
+    model.add(Dense(num_chars, activation='softmax'))
+    
+    return model
